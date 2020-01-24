@@ -155,11 +155,10 @@ class AnimalAttribute(db.Model):
 
 class Analysis(db.Model):
 
-    __tablename__ = 'analyses'
+    __tablename__ = 'gps_data'
     __table_args__ = {'extend_existing': True, u'schema': 'followdem'}
 
     id = db.Column(db.Integer(), primary_key=True)
-    device_id = db.Column(db.Integer())
     gps_date = db.Column(db.DateTime)
     ttf = db.Column(db.Integer())
     x = db.Column(db.Float())
@@ -173,7 +172,7 @@ class Analysis(db.Model):
     geom_mp = db.Column(Geometry('POINT'))
     dimension = db.Column(db.String(50))
     accurate = db.Column(db.Boolean())
-    animale_device_id = db.Column(db.Integer())
+    animale_device_id = db.Column(db.Integer(), db.ForeignKey('followdem.animal_devices.id'))
     created_at = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
