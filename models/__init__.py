@@ -153,7 +153,7 @@ class AnimalAttribute(db.Model):
             'attribute': self.attribute.json()
         }
 
-class Analysis(db.Model):
+class GPSDATA(db.Model):
 
     __tablename__ = 'gps_data'
     __table_args__ = {'extend_existing': True, u'schema': 'followdem'}
@@ -177,7 +177,7 @@ class Analysis(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __repr__(self):
-        return '<Analysis %r>' % self.id
+        return '<GPSDATA %r>' % self.id
 
     def json(self):
         return {
